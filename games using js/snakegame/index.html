@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;padding: 0;
+        }
+        .container {
+            position: relative;
+            width: 50%;
+            height: 80vh;
+            background-color: whitesmoke;
+            margin: auto;
+        }
+        .block {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: 10%;
+            background-color: white;
+            z-index: 1;
+        }
+        .block-1 {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            background-color: rgb(196, 119, 119);
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="move">Move</button>
+        <div class="block"></div>
+        <div id="block" class="block-1"></div>
+    </div>
+
+
+    <script>
+        var moveBlock = document.querySelector(".block");
+        var conatinerBlock = document.querySelector(".container");
+        var addBlock = document.getElementById("block");
+
+        var step = 20;
+        var new1 = "";
+        var leftt ="";
+        var topp = "";
+        moveBlock.style.height = "20px";
+        moveBlock.style.left = "0px";
+        moveBlock.style.top = "40px";
+        addBlock.style.left = "0px";
+        addBlock.style.top = "80px";
+
+        setInterval(() => {
+            arrange();
+            moveBlock.style.top = parseInt(moveBlock.style.top)+step+"px";
+            if(moveBlock.style.left === addBlock.style.left && moveBlock.style.top === addBlock.style.top ) {
+                new1 = insert();
+                // moveBlock.style.height=parseInt(moveBlock.style.height)+step+"px";
+
+            }
+        },1000)
+
+        window.addEventListener("keydown",function (e) {
+            if(e.key === "ArrowDown") {
+                topp = moveBlock.style.top;
+                leftt = moveBlock.style.left;
+                arrange();  
+                moveBlock.style.top = parseInt(moveBlock.style.top)+step+"px";
+            }
+            if(e.key === "ArrowUp") {
+                topp = moveBlock.style.top;
+                leftt = moveBlock.style.left;
+                arrange();
+                moveBlock.style.top = parseInt(moveBlock.style.top)-step+"px";
+            }
+            if(e.key === "ArrowLeft") {
+                leftt = moveBlock.style.left;
+                topp = moveBlock.style.top;
+                arrange();
+                moveBlock.style.left = parseInt(moveBlock.style.left)-step+"px";
+               
+            }
+            if(e.key === "ArrowRight") {
+                leftt = moveBlock.style.left;
+                topp = moveBlock.style.top;
+                arrange();
+                moveBlock.style.left = parseInt(moveBlock.style.left)+step+"px";
+            }
+        })
+
+        function arrange () {
+                var inBlock = conatinerBlock.querySelectorAll(".block");
+                console.log(inBlock.length);
+                if(inBlock.length > 1) {
+                    for(var i=inBlock.length-1;i>0;i--) {
+                    console.log(inBlock[i]);
+                    inBlock[i].style.left = inBlock[i-1].style.left;
+                    inBlock[i].style.top = inBlock[i-1].style.top;
+                }
+                }
+            }
+
+        function insert () {
+            var div = document.createElement("div");
+            div.classList.add("block");
+            div.style.left = parseInt(moveBlock.style.left)+step+"px";
+            div.style.top = parseInt(moveBlock.style.top)+"px";
+            conatinerBlock.appendChild(div);
+            return div;
+        }
+        
+    </script>
+</body>
+</html>

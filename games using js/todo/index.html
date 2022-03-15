@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            height: 100vh;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            margin: auto;
+            background-color: aliceblue;
+        }
+        .modal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal button {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            border :1px solid whitesmoke;
+            background-color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: whitesmoke;
+            color: rebeccapurple;
+        }
+        .container ul {
+            width: 90%;
+            margin-top: 20px;
+            text-decoration: none;
+            list-style: none;
+            background-color: seashell;
+        }
+        .add input{
+            width: 75%;
+            height: 40px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid whitesmoke;
+            background-color: whitesmoke;
+        }
+        .item {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            margin-top: 2px;
+            background-color: silver;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Item list</h1>
+        <div class="modal">
+            <div class="add">
+                <input id="input-field" type="text" placeholder="Add element">
+                <button id="add_element_1">Add element</button>
+                <button id="add_element_2">Update element</button>
+                <button id="add_element_3">Delete element</button>
+            </div>
+            <ul>
+                <li id="item1" class="item">item 1</li>
+                <li class="item">item 2</li>
+                <li class="item">item 3</li>
+            </ul>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

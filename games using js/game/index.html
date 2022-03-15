@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;padding: 0;
+        }
+        .container
+        {
+            width: 80%;
+            height: 80vh;
+            margin: 10vh auto;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 2fr 1fr;
+            box-sizing: border-box;
+        }
+        .box {
+            margin: 10px;
+            background-color:whitesmoke;
+            border:1px solid whitesmoke;
+            box-shadow: 0px 0px 2px rgba(0, 0, 0,0.5);
+            box-sizing: border-box;
+        }
+        .box-1 {
+            position: relative;
+            grid-column: 1 /2;
+            grid-row: 1/2;
+        }
+        .box:hover {
+            background-color: rgb(243, 232, 232);
+        }
+        .box-1 i {
+            color: rgb(73, 27, 73);
+        }
+        .box-2 i {
+            color: rgb(48, 38, 83);
+        }
+        .box-2 {
+            position: relative;
+            grid-column: 2 /-1;
+            grid-row: 1/2;
+        }
+        .box-3 {
+            position: relative;
+            grid-column: 1 /-1;
+            grid-row: 2/-1;
+        }
+        .box i {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 100px;
+            transform: translate(-50%,-50%);
+        }
+        .box h1{
+            color: rebeccapurple;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .box input {
+            position: absolute;
+            width: 80%;
+            height: 40px;
+            padding: 5px;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            outline: none;
+        }
+        .box input:hover {
+            background-color: skyblue;
+        }
+        .box input:focus {
+            background-color: skyblue;
+            box-shadow: 0 0 5px rgba(174, 180, 230, 0.5);
+        }
+        .box-3 i{
+            display: block;
+            color: rgb(146, 69, 69);
+            left: 50%;
+        }
+        .box-3 h1{
+            display: block;
+            color: rgb(146, 69, 69);
+            left: 70%;
+            top: 50%;
+        }
+        .box-3 button {
+            position: absolute;
+            left: 20%;
+            top: 50%;
+            padding: 10px;
+            font-size: 20px;
+            color: white;
+            background-color: rgb(109, 28, 28);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(64, 55, 95);
+            transform: translate(-50%,-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box-1">
+            <i class="fas fa-user"></i>
+            <h1 class="name">Player 1</h1>
+            <input id="player-1" "type="number" placeholder="Enter your no">
+        </div>
+        <div class="box box-2">
+            <i class="fas fa-user"></i>
+            <h1 class="name">Player 2</h1>
+            <input id="player-2" type="number" placeholder="Enter your no">
+        </div>
+        <div class="box box-3">
+            <button id="result">Check results </button>
+            <i id="icon" class="fas fa-user"></i>
+            <h1 id="heading" class="heading">
+                Result
+            </h1>
+        </div>
+    </div>
+    <script>
+        var player1 = document.getElementById("player-1");
+        var player2 = document.getElementById("player-2");
+        var resbtn = document.getElementById("result");
+        var win = document.getElementById("heading");
+        var iconColor = document.getElementById("icon");
+
+        var player1Score = "";
+        var player2Score = "";
+        var score = player1.addEventListener("input", (e) => {
+                    player1Score =e.target.value;   
+                    })
+        var score2 = player2.addEventListener("input", (e) => {
+                player2Score =e.target.value;
+                })
+            
+        var getScore =function () {
+            if(parseInt(player1Score) > parseInt(player2Score)) {
+                win.innerHTML= "A wins";
+                iconColor.style.color="rgb(73, 27, 73)"
+            }
+            else {
+                win.innerHTML="B wins";
+                iconColor.style.color="rgb(48, 38, 83)"
+            }
+        }
+
+        resbtn.addEventListener("click",() => {
+            getScore();
+        })
+        
+    </script>
+</body>
+</html>
